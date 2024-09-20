@@ -1,0 +1,30 @@
+name: Check PR
+
+on:
+    # Run on pull request
+    pull_request:
+        branches: [main, develop]
+
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+    contents: write
+    pages: write
+    id-token: write
+    pull-requests: write
+
+jobs:
+    analysis:
+        uses: ./.github/workflows/sonarcloud.yml
+        secrets: inherit
+
+    build:
+        uses: ./.github/workflows/build.yml
+
+    test:
+        needs: build
+        uses: ./.github/workflows/test.yml
+
+    # Trigger depfu merge
+    trigger-automerge:
+        needs: [test, analysis]
+        uses: ./.github/workflows/pr-depfu-merge.yml
