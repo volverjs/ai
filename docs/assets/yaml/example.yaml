@@ -1,0 +1,11 @@
+open: Open
+reset: Reset
+add: Add
+remove: Remove
+edit: Edit
+delete: Delete
+showResults: View results
+showDetails: Show details
+removeFilters: Remove filters
+orderAsc: Ascending order
+orderDesc: Descending order

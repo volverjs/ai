@@ -15,8 +15,10 @@ env.backends.onnx.wasm.proxy = true
 
 let model: PreTrainedModel
 let processor: Processor
+let canvas: OffscreenCanvas
 
 const init = async (options?: {
+    canvas?: OffscreenCanvas
     progress_callback: (
         data:
             | WorkerReadyEvent
@@ -25,6 +27,10 @@ const init = async (options?: {
             | WorkerDoneEvent
     ) => void
 }) => {
+    if (options?.canvas) {
+        canvas = options.canvas
+    }
+
     model = await AutoModel.from_pretrained('briaai/RMBG-1.4', {
         config: { model_type: 'custom' },
         progress_callback: options?.progress_callback,
@@ -36,7 +42,7 @@ const init = async (options?: {
             do_pad: false,
             do_rescale: true,
             do_resize: true,
-            image_mean: [0.5, 0.5, 0.5],
+            image_mean: [0, 0, 0],
             feature_extractor_type: 'ImageFeatureExtractor',
             image_std: [1, 1, 1],
             resample: 2,
@@ -52,7 +58,6 @@ const init = async (options?: {
 
 const predict = async (
     url: string,
-    canvas?: OffscreenCanvas,
     config?: {
         type?: 'image/jpeg' | 'image/png' | 'image/webp'
         quality?: number
@@ -96,11 +101,12 @@ globalThis.addEventListener(
         if (event.data.action === RemoveBackgroundAction.Init) {
             await init({
                 progress_callback: globalThis.postMessage,
+                canvas: event.data.canvas,
             })
         }
         if (event.data.action === RemoveBackgroundAction.Predict) {
             try {
-                const output = await predict(event.data.url, event.data.canvas, event.data.config)
+                const output = await predict(event.data.url, event.data.config)
                 globalThis.postMessage({
                     status: WorkerStatus.Result,
                     output,

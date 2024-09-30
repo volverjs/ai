@@ -36,7 +36,8 @@ export class WorkerProxy<T = string> {
                     for (const callback of callbacks) {
                         if (
                             (WorkerStatus.Result === event.data.status
-                                || WorkerStatus.Error === event.data.status)
+                                || WorkerStatus.Error === event.data.status
+                                || WorkerStatus.Update === event.data.status)
                                 && event.data.key
                                 && callback.key !== event.data.key
                         ) {
@@ -57,7 +58,7 @@ export class WorkerProxy<T = string> {
         )
     }
 
-    public addCallback(
+    public on(
         status: WorkerStatus,
         callback: {
             handler: (data?: WorkerOutputEvent<T>) => void
@@ -70,14 +71,22 @@ export class WorkerProxy<T = string> {
         this._callbacks.get(status)?.add(callback)
     }
 
-    public deleteCallback(
+    public off(
         status: WorkerStatus,
         callback: {
             handler: (data?: WorkerOutputEvent<T>) => void
             key?: string
-        },
+        } | string,
     ) {
         if (!this._callbacks.has(status)) {
+            return
+        }
+        if (typeof callback === 'string') {
+            this._callbacks.get(status)?.forEach((item) => {
+                if (item.key === callback) {
+                    this._callbacks.get(status)?.delete(item)
+                }
+            })
             return
         }
         this._callbacks.get(status)?.delete(callback)

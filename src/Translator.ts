@@ -12,15 +12,19 @@ import TranslatorWorker from './workers/translator?worker'
 
 export class Translator extends WorkerProxy {
     private _initialized = false
+    private _model?: string
 
-    constructor() {
+    constructor(config?: {
+        model?: string
+    }) {
         super(new TranslatorWorker())
+        this._model = config?.model
     }
 
-    public async init(
-        model?: string,
-        downloadCallback?: (progress: WorkerProgressEvent) => void,
-    ) {
+    public async init(config?: {
+        onProgress?: (progress: WorkerProgressEvent) => void
+        signal?: AbortSignal
+    }) {
         return new Promise<WorkerReadyEvent>((resolve) => {
             if (this.ready) {
                 return resolve({
@@ -31,18 +35,21 @@ export class Translator extends WorkerProxy {
             const progressCallback = {
                 handler: (data?: WorkerOutputEvent) => {
                     if (data?.status === WorkerStatus.Progress) {
-                        downloadCallback?.(data)
+                        config?.onProgress?.(data)
                     }
                 },
             }
-            this.addCallback(WorkerStatus.Progress, progressCallback)
+            this.on(WorkerStatus.Progress, progressCallback)
+            config?.signal?.addEventListener('abort', () => {
+                this.off(WorkerStatus.Progress, progressCallback)
+            })
 
             // add ready callback
-            this.addCallback(WorkerStatus.Ready, {
+            this.on(WorkerStatus.Ready, {
                 handler: (data) => {
                     if (data?.status === WorkerStatus.Ready) {
                         resolve(data)
-                        this.deleteCallback(WorkerStatus.Progress, progressCallback)
+                        this.off(WorkerStatus.Progress, progressCallback)
                     }
                 },
             })
@@ -51,7 +58,7 @@ export class Translator extends WorkerProxy {
             if (!this._initialized) {
                 this.worker.postMessage({
                     action: TranslatorAction.Init,
-                    model,
+                    model: this._model,
                 })
                 this._initialized = true
             }
@@ -63,7 +70,9 @@ export class Translator extends WorkerProxy {
         config: {
             from: string
             to: string
-            updateCallback?: (progress: WorkerUpdateEvent) => void
+            onProgress?: (progress: WorkerProgressEvent) => void
+            onUpdate?: (update: WorkerUpdateEvent) => void
+            signal?: AbortSignal
         },
     ) {
         return new Promise<WorkerResultEvent<string>>((resolve, reject) => {
@@ -73,46 +82,59 @@ export class Translator extends WorkerProxy {
             const updateCallback = {
                 handler: (data?: WorkerOutputEvent) => {
                     if (data?.status === WorkerStatus.Update) {
-                        config.updateCallback?.(data)
+                        config.onUpdate?.(data)
                     }
                 },
                 key,
             }
-            this.addCallback(
+            this.on(
                 WorkerStatus.Update,
                 updateCallback,
             )
 
-            // add result callback
-            this.addCallback(
-                WorkerStatus.Result,
-                {
-                    handler: (data) => {
-                        if (data?.status === WorkerStatus.Result) {
-                            resolve(data)
-                            this.deleteCallback(WorkerStatus.Update, updateCallback)
-                        }
-                    },
-                    key,
+            // add error callback
+            const errorCallback = {
+                handler: (data?: WorkerOutputEvent) => {
+                    if (data?.status === WorkerStatus.Error) {
+                        reject(data.error)
+                        this.off(WorkerStatus.Update, key)
+                        this.off(WorkerStatus.Result, key)
+                    }
                 },
+                key,
+            }
+            this.on(
+                WorkerStatus.Error,
+                errorCallback,
             )
 
-            // add error callback
-            this.addCallback(
-                WorkerStatus.Error,
-                {
-                    handler: (data) => {
-                        if (data?.status === WorkerStatus.Error) {
-                            reject(data.error)
-                            this.deleteCallback(WorkerStatus.Update, updateCallback)
-                        }
-                    },
-                    key,
+            // add result callback
+            const resultCallback = {
+                handler: (data?: WorkerOutputEvent) => {
+                    if (data?.status === WorkerStatus.Result) {
+                        resolve(data)
+                        this.off(WorkerStatus.Update, key)
+                        this.off(WorkerStatus.Error, key)
+                    }
                 },
+                key,
+            }
+
+            this.on(
+                WorkerStatus.Result,
+                resultCallback,
             )
+
+            config?.signal?.addEventListener('abort', () => {
+                this.off(WorkerStatus.Update, key)
+                this.off(WorkerStatus.Result, key)
+                this.off(WorkerStatus.Error, key)
+            })
 
             // send translate request after init
-            this.init().then(() => {
+            this.init({
+                onProgress: config.onProgress,
+            }).then(() => {
                 this.worker.postMessage({
                     action: TranslatorAction.Translate,
                     text,

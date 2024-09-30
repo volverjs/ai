@@ -6,9 +6,13 @@
         "useDefineForClassFields": true,
         "baseUrl": ".",
         "module": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "Bundler",
+        "paths": {
+            "~/*": ["src/*"],
+            "@/*": ["docs/*"]
+        },
         "resolveJsonModule": true,
-        "types": ["vitest/globals", "vite/client", "node"],
+        "types": ["vitest/globals", "vite/client", "unplugin-vue-router/client", "vite-plugin-vue-layouts/client", "node"],
         "strict": true,
         "strictBindCallApply": true,
         "strictFunctionTypes": true,

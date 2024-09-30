@@ -1,0 +1,11 @@
+// volver context (mixins, variables, etc)
+@use '@volverjs/style/scss/context' with (
+    $font-family-sans: "'Open Sans', sans-serif"
+);
+@forward '@volverjs/style/scss/context';
+
+// custom components settings
+@forward 'components';
+
+// other settings
+@forward 'input';

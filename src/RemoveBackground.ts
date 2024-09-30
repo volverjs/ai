@@ -18,7 +18,11 @@ export class RemoveBackground extends WorkerProxy<RemoveBackgroundResult> {
     }
 
     public async init(
-        downloadCallback?: (progress: WorkerProgressEvent) => void,
+        config?: {
+            onProgress?: (progress: WorkerProgressEvent) => void
+            signal?: AbortSignal
+            canvas?: HTMLCanvasElement
+        },
     ) {
         return new Promise<WorkerReadyEvent>((resolve) => {
             if (this.ready) {
@@ -30,27 +34,32 @@ export class RemoveBackground extends WorkerProxy<RemoveBackgroundResult> {
             const progressCallback = {
                 handler: (data?: WorkerOutputEvent<RemoveBackgroundResult>) => {
                     if (data?.status === WorkerStatus.Progress) {
-                        downloadCallback?.(data)
+                        config?.onProgress?.(data)
                     }
                 },
             }
-            this.addCallback(WorkerStatus.Progress, progressCallback)
+            this.on(WorkerStatus.Progress, progressCallback)
+            config?.signal?.addEventListener('abort', () => {
+                this.off(WorkerStatus.Progress, progressCallback)
+            })
 
             // add ready callback
-            this.addCallback(WorkerStatus.Ready, {
+            this.on(WorkerStatus.Ready, {
                 handler: (data) => {
                     if (data?.status === WorkerStatus.Ready) {
                         resolve(data)
-                        this.deleteCallback(WorkerStatus.Progress, progressCallback)
+                        this.off(WorkerStatus.Progress, progressCallback)
                     }
                 },
             })
 
             // send init request
             if (!this._initialized) {
+                const canvas = config?.canvas?.transferControlToOffscreen()
                 this.worker.postMessage({
                     action: RemoveBackgroundAction.Init,
-                })
+                    canvas,
+                }, canvas ? [canvas] : [])
                 this._initialized = true
             }
         })
@@ -62,13 +71,15 @@ export class RemoveBackground extends WorkerProxy<RemoveBackgroundResult> {
             canvas?: HTMLCanvasElement
             type?: 'image/jpeg' | 'image/png' | 'image/webp'
             quality?: number
+            onProgress?: (progress: WorkerProgressEvent) => void
+            signal?: AbortSignal
         },
     ) {
         return new Promise<WorkerResultEvent<RemoveBackgroundResult>>((resolve, reject) => {
             const key = crypto.randomUUID()
 
             // add result callback
-            this.addCallback(
+            this.on(
                 WorkerStatus.Result,
                 {
                     handler: (data) => {
@@ -81,7 +92,7 @@ export class RemoveBackground extends WorkerProxy<RemoveBackgroundResult> {
             )
 
             // add error callback
-            this.addCallback(
+            this.on(
                 WorkerStatus.Error,
                 {
                     handler: (data) => {
@@ -93,19 +104,25 @@ export class RemoveBackground extends WorkerProxy<RemoveBackgroundResult> {
                 },
             )
 
+            config?.signal?.addEventListener('abort', () => {
+                this.off(WorkerStatus.Result, key)
+                this.off(WorkerStatus.Error, key)
+            })
+
             // send translate request after init
-            this.init().then(() => {
-                const offscreen = config?.canvas?.transferControlToOffscreen()
+            this.init({
+                onProgress: config?.onProgress,
+                canvas: config?.canvas,
+            }).then(() => {
                 this.worker.postMessage({
                     action: RemoveBackgroundAction.Predict,
                     url,
-                    canvas: offscreen,
                     config: {
                         type: config?.type,
                         quality: config?.quality,
                     },
                     key,
-                }, offscreen ? [offscreen] : [])
+                })
             })
         })
     }

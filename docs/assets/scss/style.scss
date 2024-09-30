@@ -1,0 +1,18 @@
+// volver base
+@use '@volverjs/style/scss/base';
+
+// volver components 
+@use '@volverjs/style/scss/components';
+
+// volver utilities
+@use '@volverjs/style/scss/utilities';
+
+// volver themes
+@use '@volverjs/style/scss/themes/dark';
+
+// custom style
+@use 'custom';
+
+// volver preflight
+@import '@volverjs/style/scss/preflight';
+

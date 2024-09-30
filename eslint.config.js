@@ -21,6 +21,9 @@ export default antfu({
         'antfu/top-level-function': 'off',
         'perfectionist/sort-named-imports': 'off',
     },
+    extends: [
+        './.eslintrc-auto-import.json',
+    ],
 }, {
     ignores: ['.vscode', 'dist', 'node_modules'],
 })

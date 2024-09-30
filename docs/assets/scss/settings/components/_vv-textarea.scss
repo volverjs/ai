@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use '@volverjs/style/scss/context' as *;
+
+$vv-textarea: map.deep-merge(
+    $vv-textarea,
+    (
+        state: (
+            readonly: (
+                element: (
+                    wrapper: (
+                        state: (
+                            hover: (
+                                background-color: var(--color-surface),
+                            ),
+                            focus-within: (
+                                background-color: var(--color-surface),
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    )
+);

@@ -6,12 +6,12 @@ export enum RemoveBackgroundAction {
 export type RemoveBackgroundInitEvent = {
     action: RemoveBackgroundAction.Init
     model?: string
+    canvas?: OffscreenCanvas
 }
 
 export type RemoveBackgroundPredictEvent = {
     action: RemoveBackgroundAction.Predict
     url: string
-    canvas?: OffscreenCanvas
     config?: {
         type?: 'image/jpeg' | 'image/png' | 'image/webp'
         quality?: number
