@@ -1,6 +1,6 @@
 import path from 'node:path'
 import ESLint from '@nabla/vite-plugin-eslint'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
 import MarkdownIt from 'markdown-it'
 import MarkdownItAnchor from 'markdown-it-anchor'
 import MarkdownItPrism from 'markdown-it-prism'
@@ -25,7 +25,7 @@ export default defineConfig({
 
     plugins: [
         // https://github.com/vitejs/vite-plugin-vue
-        vue(),
+        Vue(),
 
         // https://github.com/posva/unplugin-vue-router
         VueRouter({
@@ -56,7 +56,7 @@ export default defineConfig({
             pagesDirs: 'docs/pages',
         }),
 
-        // https://github.com/gxmari007/vite-plugin-eslint
+        // https://github.com/nabla/vite-plugin-eslint
         ESLint(),
     ],
 
