@@ -7,12 +7,22 @@ import { defineConfig } from 'vitest/config'
 export default () => {
     return defineConfig({
         base: './',
+
+        publicDir: false,
+
+        resolve: {
+            alias: {
+                '~/': `${path.resolve(__dirname, 'src')}/`,
+            },
+        },
+
         test: {
             globals: true,
             environment: 'happy-dom',
             setupFiles: ['@vitest/web-worker'],
             testTimeout: 100000000,
         },
+
         build: {
             lib: {
                 name: '@volverjs/ai',
@@ -21,7 +31,7 @@ export default () => {
                     'index': path.resolve(__dirname, 'src/index.ts'),
                     'vue/index': path.resolve(__dirname, 'src/vue/index.ts'),
                 },
-                fileName: (format, entryName) => `${entryName}.js`,
+                fileName: (_format, entryName) => `${entryName}.js`,
             },
             rollupOptions: {
                 external: ['vue'],
@@ -39,7 +49,7 @@ export default () => {
                 include: [/\.vue$/],
             }),
 
-            // https://github.com/gxmari007/vite-plugin-eslint
+            // https://github.com/nabla/vite-plugin-eslint
             ESLint(),
         ],
     })
