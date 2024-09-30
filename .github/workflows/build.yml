@@ -34,3 +34,14 @@ jobs:
               with:
                   name: package
                   path: '*.tgz'
+
+            - name: Build documentation
+              run: pnpm build:docs
+
+            - name: Setup GitHub Pages
+              uses: actions/configure-pages@v5
+
+            - name: Upload styleguide
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: './dist-docs'

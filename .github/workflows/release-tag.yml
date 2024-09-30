@@ -25,4 +25,4 @@ jobs:
               with:
                   tag_name: ${{ github.ref }}
                   body: |
-                      Please refer to [CHANGELOG.md](https://github.com/volverjs/data/blob/${{ contains(github.ref, 'beta') && 'develop' || 'main'}}/CHANGELOG.md) for details.
+                      Please refer to [CHANGELOG.md](https://github.com/volverjs/ai/blob/${{ contains(github.ref, 'beta') && 'develop' || 'main'}}/CHANGELOG.md) for details.

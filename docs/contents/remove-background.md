@@ -171,7 +171,7 @@ const {
     sourceImageURL,
     {
         // the source language
-        canvas: canvasEl
+        canvas: canvasEl,
         // the target language
         type: 'image/webp',
         // number (default: 0.5)

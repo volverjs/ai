@@ -296,7 +296,7 @@ removeBackground.predict(sourceImageURL, { canvas })
 
 If you are using Vue.js, you can use the Composition API to create a reactive background removal.
 
-```markup
+```vue
 <script lang="ts" setup>
 import { useRemoveBackground } from '@volverjs/ai/vue'
 import { ref } from 'vue'
@@ -315,7 +315,7 @@ The `resultUrl` reactive property contains the URL of the processed image. Chang
 
 To use a canvas element, pass the canvas element to the `predict` method.
 
-```markup
+```vue
 <script lang="ts" setup>
 import { useRemoveBackground } from '@volverjs/ai/vue'
 import { ref } from 'vue'
@@ -330,7 +330,7 @@ predict(sourceImageURL, {
 
 <template>
     <img :src="sourceImageURL" alt="Source Image">
-    <canvas ref="canvasEl"></canvas>
+    <canvas ref="canvasEl" />
 </template>
 ```
 
@@ -366,7 +366,7 @@ onMounted(() => {
 
 Below is a complete example of a Vue.js component that uses the `useRemoveBackground` function.
 
-```markup
+```vue
 <script lang="ts" setup>
 import { useRemoveBackground } from '@volverjs/ai/vue'
 import { ref, watch } from 'vue'
@@ -408,7 +408,7 @@ const {
     sourceImageURL,
     {
         // the source language
-        canvas: canvasEl
+        canvas: canvasEl,
         // the target language
         type: 'image/webp',
         // number (default: 0.5)
@@ -423,7 +423,7 @@ const {
 
 <template>
     <img :src="sourceImageURL" alt="Source Image">
-    <canvas ref="canvasEl"></canvas>
+    <canvas ref="canvasEl" />
 </template>
 ```
 

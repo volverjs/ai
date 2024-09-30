@@ -51,3 +51,14 @@ jobs:
             - run: npm publish $(ls *.tgz) --access=public --tag ${{ github.event.release.prerelease && 'next' || 'latest'}}
               env:
                   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    deploy:
+        needs: [build, analysis]
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
