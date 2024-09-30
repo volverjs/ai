@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '@volverjs/style/scss/context' as *;
+
+$vv-card: map.deep-merge(
+    $vv-card,
+    (
+        overflow: visible,
+        modifier: (
+            loading: (
+                pseudo: (
+                    after: (
+                        position: absolute,
+                        pointer-events: none,
+                        border-radius: var(--rounded),
+                        inset: 0,
+                        opacity: var(--opacity-100),
+                        border-width: var(--border-2),
+                        border-style: dashed,
+                        transition: var(--transition-all),
+                        border-color: var(--color-brand),
+                        animation: var(--animation-clippath),
+                    ),
+                ),
+            ),
+        ),
+    )
+);
+
+
+

@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use '@volverjs/style/scss/context' as *;
+
+$vv-text: map.deep-merge(
+    $vv-text,
+    (
+        modifier: (
+            headline: (
+                margin-top: var(--spacing-lg),
+            ),
+        ),
+    )
+);

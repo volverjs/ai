@@ -1,0 +1,10 @@
+# Logs
+npm-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-docs
+coverage
+.eslintcache
+
