@@ -1,5 +1,6 @@
 ---
 index: 0
+hero: true
 section: Get Started
 title: Setup
 description: 'Volver AI is a Transformers.js wrapper for add AI capabilities to your web applications in a simple way with multithreading support.'
@@ -31,11 +32,11 @@ const translator = new Translator()
 The library automatically downloads and run the model inside a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker).
 Using a Web Worker allows the library to run the model in a separate thread, preventing the main thread from blocking.
 
-<div class="vv-alert vv-alert--callout vv-alert--info mb-lg">
+<div class="vv-alert vv-alert--callout vv-alert--warning mb-lg">
   <div class="vv-alert__header">
-    <div class="vv-alert__title">Info</div>
+    <div class="vv-alert__title">Warning</div>
   </div>
-  <div class="vv-alert__content">Any instance of the AI classes initializes a new Web Worker with the model and manages the communication between the main thread and the worker. If you need to use the same worker in multiple places, you can create a single instance and share it across your application.</div>
+  <div class="vv-alert__content">Any instance of the AI classes initializes a new Web Worker with the model and manages the communication between the main thread and the worker. If you need to use the <strong>same worker</strong> in multiple places, you can create a <strong>single instance</strong> and share it across your application.</div>
 </div>
 
 ### Model initialization

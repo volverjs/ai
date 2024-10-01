@@ -1,6 +1,6 @@
 <div align="center">
 
-[![volverjs](public/volverjs-ai.svg)](https://volverjs.github.io/ai)
+[![volverjs](public/volverjs-ai-reduced.svg)](https://volverjs.github.io/ai)
 
 ## @volverjs/ai
 
@@ -22,7 +22,7 @@ maintained with ❤️ by
 </div>
 
 ## Get Started
-Volver AI is a Transformers.js wrapper for add AI capabilities to your web applications in a simple way with multithreading support.
+Volver AI is an Hugging Face [Transformers.js](https://github.com/xenova/transformers.js) wrapper for add AI capabilities to your web applications in a simple way with multithreading support.
 
 - [Install](#install)
 - [Model initialization](#model-initialization)
