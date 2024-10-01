@@ -81,7 +81,7 @@ const onClickCopy = () => {
 </script>
 
 <template>
-    <div class="md:grid grid-cols-2 gap-md mb-md">
+    <div class="flex flex-col md:grid grid-cols-2 gap-md mb-md">
         <div class="flex flex-col items-start">
             <VvCard class="flex-1 w-full mb-md">
                 <template #header>

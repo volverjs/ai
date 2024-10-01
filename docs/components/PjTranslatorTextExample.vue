@@ -42,7 +42,7 @@ const onClickLanguageSwitch = () => {
         <VvButton icon="akar-icons:arrow-right-left" title="Switch languages" class="shrink-0" modifiers="action-quiet" @click="onClickLanguageSwitch" />
         <PjLanguageSelector v-model="to" name="to" searchable class="flex-1 mb-0" />
     </div>
-    <div class="md:grid grid-cols-2 gap-md mb-md">
+    <div class="flex flex-col md:grid grid-cols-2 gap-md mb-md">
         <div>
             <VvTextarea v-model="text" name="text" rows="5" count />
             <VvButtonGroup>
