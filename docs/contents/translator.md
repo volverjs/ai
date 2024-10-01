@@ -77,8 +77,8 @@ const { result } = translate(text, {
   <div class="vv-alert__header">
     <div class="vv-alert__title">Info</div>
   </div>
-  <div class="vv-alert__content">The <code>result</code> reactive property contains the partial translation during process
-   and the final result when the translation is completed.</div>
+  <div class="vv-alert__content">The <code>result</code> reactive property contains the <strong>partial translation</strong> during process
+   and the <strong>final result</strong> when the translation is completed.</div>
 </div>
 
 You can use a custom model by passing the `model` option to the `useTranslator` function.
