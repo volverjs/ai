@@ -1,6 +1,6 @@
 <div align="center">
 
-[![volverjs](public/volverjs.svg)](https://volverjs.github.io/ai)
+[![volverjs](public/volverjs-ai.svg)](https://volverjs.github.io/ai)
 
 ## @volverjs/ai
 
@@ -23,6 +23,20 @@ maintained with ❤️ by
 
 ## Get Started
 Volver AI is a Transformers.js wrapper for add AI capabilities to your web applications in a simple way with multithreading support.
+
+- [Install](#install)
+- [Model initialization](#model-initialization)
+- [Download progress](#download-progress)
+- [Translator](#translator)
+  - [Choose a model](#choose-a-model)
+  - [Translate text](#translate-text)
+  - [Listen updates](#listen-updates)
+  - [Vue.js](#vuejs)
+- [Remove Background](#remove-background)
+  - [Create an instance](#create-an-instance)
+  - [Process an image](#process-an-image)
+  - [Canvas](#canvas)
+  - [Vue.js](#vuejs-1)
 
 ### Install
 
@@ -255,24 +269,17 @@ const {
 ```
 
 ## Remove Background
-Remove the background from an image using a state-of-the-art background removal AI model, designed to effectively separate foreground from background in a range of categories and image types.
+Remove the background from an image uses [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4) as background removal AI model, designed to effectively separate foreground from background in a range of categories and image types.
 
-### Create an instance
-
-`@volverjs/ai` uses [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4) model to remove the background from an image.
+### Process an image
+To remove the background from an image, use the `predict` method passing the image URL.
 
 ```typescript
 import { RemoveBackground } from '@volverjs/ai'
 
-const removeBackground = new RemoveBackground()
-```
-
-### Process an image
-
-To remove the background from an image, use the `predict` method passing the image URL.
-
-```typescript
 const sourceImageURL = 'https://example.com/image.jpg'
+
+const removeBackground = new RemoveBackground()
 const result = await removeBackground.predict(sourceImageURL)
 ```
 

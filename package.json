@@ -3,7 +3,7 @@
     "type": "module",
     "version": "0.0.0",
     "packageManager": "pnpm@9.10.0",
-    "description": "Transformers.js wrapper for on-device AI with web workers",
+    "description": "Hugging Face Transformers.js wrapper for on-device AI with web-workers",
     "author": "8 Wave S.r.l.",
     "license": "MIT",
     "homepage": "https://github.com/volverjs/ai",

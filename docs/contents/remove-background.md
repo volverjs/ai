@@ -7,7 +7,7 @@ description: 'Remove the background from an image using a state-of-the-art backg
 
 ### Create an instance
 
-`@volverjs/ai` uses [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4) model to remove the background from an image.
+`@volverjs/ai` uses [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4) model.
 
 ```typescript
 import { RemoveBackground } from '@volverjs/ai'

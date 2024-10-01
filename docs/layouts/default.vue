@@ -104,7 +104,7 @@ const packageVersion = __PACKAGE_VERSION__
                 title="Go to home"
             >
                 <img
-                    src="/volverjs.svg"
+                    src="/volverjs-ai-reduced.svg"
                     alt="Volver"
                     width="26"
                     height="26"
