@@ -52,21 +52,21 @@ const wrapperEl = ref()
 
 <template>
     <div v-if="hero" class="relative border-b border-surface-3 bg-gray-darken-4 overflow-hidden flex justify-center">
-        <div class="inset-0 absolute opacity-50 bg-grid bg-blend-screen bg-gray-darken-4" />
+        <div class="inset-0 absolute opacity-60 bg-grid bg-blend-screen bg-gray-darken-4" />
         <div class="w-full lg:w-10/12 xl:w-11/12 xxl:w-9/12">
-            <div class="flex flex-col sm:flex-row text-center sm:text-left items-center gap-lg px-16 py-lg relative">
+            <div class="flex flex-col sm:flex-row text-center sm:text-left items-center gap-xl px-16 py-xl relative">
                 <img
                     src="/volverjs-ai-reduced.svg"
                     alt="@volverjs/ai"
                     width="200"
                     height="200"
                 >
-                <div>
-                    <h1 class="vv-text vv-text--size-1 vv-text--headline font-bold text-gray-lighten-5 block">
+                <div class="flex flex-col items-center sm:items-start">
+                    <h1 class="vv-text vv-text--size-1 vv-text--headline mt-0 font-bold text-gray-lighten-5 block">
                         <span class="text-warning">@volverjs/ai</span><br>
                         Powerful AI Tools Made Easy
                     </h1>
-                    <h2 class="vv-text vv-text--size-3 mb-md text-gray-lighten-5 max-w-screen-xs">
+                    <h2 class="vv-text vv-text--size-3 text-gray-lighten-5 max-w-screen-xs">
                         An Hugging Face Transformers.js wrapper with Web Workers.
                     </h2>
                 </div>
