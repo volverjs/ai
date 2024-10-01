@@ -20,6 +20,18 @@ import PjTranslatorYamlExample from '@/components/PjTranslatorYamlExample.vue'
                     This example shows how to use <code>@volverjs/ai</code> to translate text with <a href="https://huggingface.co/Xenova/nllb-200-distilled-600M" target="_blank"><code>Xenova/nllb-200-distilled-600M</code></a>. Choose the languages you want to translate from and to, then paste the text you want to translate. The result will be displayed in the right textarea.
                 </p>
             </div>
+            <div class="vv-alert vv-alert--callout vv-alert--warning mb-md">
+                <div class="vv-alert__header">
+                    <div class="vv-alert__title">
+                        Warning
+                    </div>
+                </div>
+                <div class="vv-alert__content">
+                    <strong class="font-bold block">Mobile devices may experience performance issues.</strong>
+                    This example uses a large model that may take from a few seconds to a few minutes to load, please be patient.
+                    For a faster experience, you can use a smaller model as shown in the next example.
+                </div>
+            </div>
             <PjTranslatorTextExample />
             <div class="preflight">
                 <h3>YAML Translator</h3>

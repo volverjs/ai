@@ -65,7 +65,7 @@ function onDrop(event: DragEvent) {
         class="vv-input-file vv-input-file--hidden"
         :class="{ 'vv-input-file--loading': isLoading, 'vv-input-file--dragging': isDragging }"
     >
-        <label for="droparea">Select an image (from <a href="https://unsplash.com" target="_blank" class="text-brand">Unsplash</a>):</label>
+        <label for="droparea" class="mb-sm">Select an image (from <a href="https://unsplash.com" target="_blank" class="text-brand">Unsplash</a>):</label>
         <ul class="grid grid-cols-4 gap-md mb-md">
             <li v-for="src in DEFAULT_IMAGES" :key="src">
                 <button type="button" title="Select" class="cursor-pointer" @click="selectedUrl = src">
@@ -78,14 +78,13 @@ function onDrop(event: DragEvent) {
             @dragleave.prevent.stop="onDragleave"
             @drop.prevent.stop="onDrop"
             @dragover.prevent.stop
-            @click.stop="onClickUpload"
         >
             <VvButton v-if="!selectedUrl" label="Click to upload a picture" class="relative z-1" icon="upload" @click="onClickUpload" />
             <picture class="vv-input-file__preview">
                 <div class="relative h-full">
                     <canvas
                         ref="canvasEl" class="absolute inset-0 w-full" :class="{
-                            'opacity-0': isLoading,
+                            'opacity-0': isLoading || !selectedUrl,
                         }"
                     />
                     <img
