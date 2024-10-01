@@ -1,7 +1,10 @@
 {
   // Enable the ESlint flat config support
   // (remove this if your ESLint extension above v3.0.5)
-  "eslint.experimental.useFlatConfig": true,
+  "eslint.useFlatConfig": true,
+
+  // Disable table of contents auto update on markdown files
+  "markdown.extension.toc.updateOnSave": false,
 
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,

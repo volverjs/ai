@@ -104,7 +104,7 @@ const packageVersion = __PACKAGE_VERSION__
                 title="Go to home"
             >
                 <img
-                    src="/volverjs.svg"
+                    src="/volverjs-ai-reduced.svg"
                     alt="Volver"
                     width="26"
                     height="26"
@@ -131,7 +131,7 @@ const packageVersion = __PACKAGE_VERSION__
                     />
                 </button>
                 <a
-                    href="https://github.com/volverjs/style"
+                    href="https://github.com/volverjs/ai"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="vv-button vv-button--action-quiet"

@@ -5,7 +5,9 @@ import { VvDropdown, VvDropdownItem, VvIcon } from '@volverjs/ui-vue/components'
 import { ref } from 'vue'
 import { useTranslator } from '~/vue'
 
-const { translate, init, isReady, progress } = useTranslator()
+const { translate, init, isReady, progress } = useTranslator({
+    global: true,
+})
 const { result, isLoading, execute } = translate(undefined, {
     from: 'eng_Latn',
     to: 'ita_Latn',

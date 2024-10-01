@@ -3,7 +3,7 @@ import { VolverPlugin } from '@volverjs/ui-vue'
 import { normal } from '@volverjs/ui-vue/icons'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import { routes } from 'vue-router/auto-routes'
 import App from './App.vue'
 
@@ -20,7 +20,7 @@ routes.push({
     redirect: '/setup',
 })
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(import.meta.env.BASE_URL),
     routes: setupLayouts(routes),
     linkActiveClass: 'selected',
     linkExactActiveClass: 'current',

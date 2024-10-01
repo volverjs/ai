@@ -1,6 +1,6 @@
 <div align="center">
 
-[![volverjs](public/volverjs.svg)](https://volverjs.github.io/ai)
+[![volverjs](public/volverjs-ai.svg)](https://volverjs.github.io/ai)
 
 ## @volverjs/ai
 
@@ -23,6 +23,20 @@ maintained with ❤️ by
 
 ## Get Started
 Volver AI is a Transformers.js wrapper for add AI capabilities to your web applications in a simple way with multithreading support.
+
+- [Install](#install)
+- [Model initialization](#model-initialization)
+- [Download progress](#download-progress)
+- [Translator](#translator)
+  - [Choose a model](#choose-a-model)
+  - [Translate text](#translate-text)
+  - [Listen updates](#listen-updates)
+  - [Vue.js](#vuejs)
+- [Remove Background](#remove-background)
+  - [Create an instance](#create-an-instance)
+  - [Process an image](#process-an-image)
+  - [Canvas](#canvas)
+  - [Vue.js](#vuejs-1)
 
 ### Install
 
@@ -50,6 +64,9 @@ const removeBackground = new RemoveBackground()
 
 The library automatically downloads and run the model inside a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker).
 Using a Web Worker allows the library to run the model in a separate thread, preventing the main thread from blocking.
+
+> [!WARNING]
+> Any instance of the AI classes initializes a new Web Worker with the model and manages the communication between the main thread and the worker. If you need to use the same worker in multiple places, you can create a single instance and share it across your application.
 
 ### Model initialization
 
@@ -153,6 +170,9 @@ const { result } = translate(text, {
 </template>
 ```
 
+> [!TIP]
+> The `result` reactive property contains the partial translation during process and the final result when the translation is completed.
+
 You can use a custom model by passing the `model` option to the `useTranslator` function.
 
 ```typescript
@@ -249,24 +269,17 @@ const {
 ```
 
 ## Remove Background
-Remove the background from an image using a state-of-the-art background removal AI model, designed to effectively separate foreground from background in a range of categories and image types.
+Remove the background from an image uses [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4) as background removal AI model, designed to effectively separate foreground from background in a range of categories and image types.
 
-### Create an instance
-
-`@volverjs/ai` uses [briaai/RMBG-1.4](https://huggingface.co/briaai/RMBG-1.4) model to remove the background from an image.
+### Process an image
+To remove the background from an image, use the `predict` method passing the image URL.
 
 ```typescript
 import { RemoveBackground } from '@volverjs/ai'
 
-const removeBackground = new RemoveBackground()
-```
-
-### Process an image
-
-To remove the background from an image, use the `predict` method passing the image URL.
-
-```typescript
 const sourceImageURL = 'https://example.com/image.jpg'
+
+const removeBackground = new RemoveBackground()
 const result = await removeBackground.predict(sourceImageURL)
 ```
 
@@ -291,6 +304,9 @@ You can pass a canvas element in the DOM to the `predict` method to draw the res
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 removeBackground.predict(sourceImageURL, { canvas })
 ```
+
+> [!TIP]
+> `@volverjs/ai` use the [OffscreenCanvas API](https://web.dev/articles/offscreen-canvas) to delegate the image processing in the canvas to the worker thread.
 
 ### Vue.js
 

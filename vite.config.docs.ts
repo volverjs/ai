@@ -11,13 +11,15 @@ import Stylelint from 'vite-plugin-stylelint'
 import Layouts from 'vite-plugin-vue-layouts'
 import packageJson from './package.json'
 
-export default defineConfig({
+export default ({ mode }) => defineConfig({
     resolve: {
         alias: {
             '~/': `${path.resolve(__dirname, 'src')}/`,
             '@/': `${path.resolve(__dirname, 'docs')}/`,
         },
     },
+
+    base: mode === 'development' ? './' : '/ai/',
 
     build: {
         outDir: 'dist-docs',

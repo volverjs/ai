@@ -8,7 +8,9 @@ import { useTranslator } from '~/vue'
 const text = ref(`Imagine there's no heaven, it's easy if you try, no hell below us, above us, only sky.`)
 const from = ref('eng_Latn')
 const to = ref('ita_Latn')
-const { translate } = useTranslator()
+const { translate } = useTranslator({
+    global: true,
+})
 const { result, isLoading, progress } = translate(text, {
     from,
     to,
