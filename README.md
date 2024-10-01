@@ -51,6 +51,9 @@ const removeBackground = new RemoveBackground()
 The library automatically downloads and run the model inside a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Worker).
 Using a Web Worker allows the library to run the model in a separate thread, preventing the main thread from blocking.
 
+> [!WARNING]
+> Any instance of the AI classes initializes a new Web Worker with the model and manages the communication between the main thread and the worker. If you need to use the same worker in multiple places, you can create a single instance and share it across your application.
+
 ### Model initialization
 
 The first time you instantiate the model, it will download the model files from [Hugging Face Hub](https://huggingface.co/docs/hub/index). This process can take a few seconds or minutes depending on the model size and your internet connection.
@@ -152,6 +155,9 @@ const { result } = translate(text, {
     <p>{{ result }}</p>
 </template>
 ```
+
+> [!TIP]
+> The `result` reactive property contains the partial translation during process and the final result when the translation is completed.
 
 You can use a custom model by passing the `model` option to the `useTranslator` function.
 
@@ -291,6 +297,9 @@ You can pass a canvas element in the DOM to the `predict` method to draw the res
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 removeBackground.predict(sourceImageURL, { canvas })
 ```
+
+> [!TIP]
+> `@volverjs/ai` use the [OffscreenCanvas API](https://web.dev/articles/offscreen-canvas) to delegate the image processing in the canvas to the worker thread.
 
 ### Vue.js
 

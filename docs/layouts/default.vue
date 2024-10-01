@@ -131,7 +131,7 @@ const packageVersion = __PACKAGE_VERSION__
                     />
                 </button>
                 <a
-                    href="https://github.com/volverjs/style"
+                    href="https://github.com/volverjs/ai"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="vv-button vv-button--action-quiet"
