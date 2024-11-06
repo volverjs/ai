@@ -86,7 +86,7 @@
         "copy": "^0.3.2",
         "eslint": "^9.14.0",
         "globals": "^15.11.0",
-        "happy-dom": "^15.8.0",
+        "happy-dom": "^15.10.1",
         "markdown-it": "^14.1.0",
         "markdown-it-anchor": "^9.2.0",
         "markdown-it-prism": "^2.3.0",
