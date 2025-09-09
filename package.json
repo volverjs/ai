@@ -94,7 +94,7 @@
         "sass-embedded": "^1.81.0",
         "typescript": "^5.6.3",
         "unplugin-vue-router": "^0.10.8",
-        "vite": "^5.4.19",
+        "vite": "^5.4.20",
         "vite-plugin-markdown": "^2.2.0",
         "vite-plugin-stylelint": "^5.3.1",
         "vite-plugin-vue-layouts": "^0.11.0",
