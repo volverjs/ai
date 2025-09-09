@@ -17,7 +17,7 @@ importers:
         version: 3.9.1(@typescript-eslint/utils@8.14.0(eslint@9.15.0)(typescript@5.6.3))(@vue/compiler-sfc@3.5.10)(eslint@9.15.0)(typescript@5.6.3)(vitest@2.1.9(@types/node@22.9.0)(happy-dom@15.11.6)(jsdom@24.1.3)(sass-embedded@1.81.0)(sass@1.79.3))
       '@nabla/vite-plugin-eslint':
         specifier: ^2.0.4
-        version: 2.0.4(eslint@9.15.0)(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
+        version: 2.0.4(eslint@9.15.0)(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
       '@types/node':
         specifier: ^22.9.0
         version: 22.9.0
@@ -29,7 +29,7 @@ importers:
         version: 1.11.11(vue@3.5.10(typescript@5.6.3))
       '@vitejs/plugin-vue':
         specifier: ^5.2.0
-        version: 5.2.0(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue@3.5.10(typescript@5.6.3))
+        version: 5.2.0(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue@3.5.10(typescript@5.6.3))
       '@vitest/web-worker':
         specifier: ^2.1.5
         version: 2.1.5(vitest@2.1.9(@types/node@22.9.0)(happy-dom@15.11.6)(jsdom@24.1.3)(sass-embedded@1.81.0)(sass@1.79.3))
@@ -82,17 +82,17 @@ importers:
         specifier: ^0.10.8
         version: 0.10.8(rollup@4.21.3)(vue-router@4.4.5(vue@3.5.10(typescript@5.6.3)))(vue@3.5.10(typescript@5.6.3))
       vite:
-        specifier: ^5.4.19
-        version: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+        specifier: ^5.4.20
+        version: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
       vite-plugin-markdown:
         specifier: ^2.2.0
-        version: 2.2.0(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
+        version: 2.2.0(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
       vite-plugin-stylelint:
         specifier: ^5.3.1
-        version: 5.3.1(postcss@8.4.47)(rollup@4.21.3)(stylelint@16.9.0(typescript@5.6.3))(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
+        version: 5.3.1(postcss@8.4.47)(rollup@4.21.3)(stylelint@16.9.0(typescript@5.6.3))(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
       vite-plugin-vue-layouts:
         specifier: ^0.11.0
-        version: 0.11.0(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue-router@4.4.5(vue@3.5.10(typescript@5.6.3)))(vue@3.5.10(typescript@5.6.3))
+        version: 0.11.0(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue-router@4.4.5(vue@3.5.10(typescript@5.6.3)))(vue@3.5.10(typescript@5.6.3))
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@22.9.0)(happy-dom@15.11.6)(jsdom@24.1.3)(sass-embedded@1.81.0)(sass@1.79.3)
@@ -3704,10 +3704,12 @@ packages:
   ts-dot-prop@2.1.4:
     resolution: {integrity: sha512-ds8gGKOMrjsJiYvxP5drQy9JaxGT+NTal3E06RtfnyZnEk3kXzaG6OkvWGuLU8m7kqXFkjtI3JlUrg5OSqD+Jw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   ts-util-is@2.1.0:
     resolution: {integrity: sha512-qDZ6txIWjwh7FZsoGiqsH82GuNRZE8uOWOGqbi66NGlMFz7Ps8ak8azJiDhdbpkgmmACdLFJJtuajmQoFwQNNA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
@@ -3878,8 +3880,8 @@ packages:
       vue: ^3.2.4
       vue-router: ^4.0.11
 
-  vite@5.4.19:
-    resolution: {integrity: sha512-qO3aKv3HoQC8QKiNSTuUM1l9o/XX3+c+VTgLHbJWHZGeTPVAg2XwazI9UWzoxjIJCGCV2zU60uqMzjeLZuULqA==}
+  vite@5.4.20:
+    resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4456,13 +4458,13 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
-  '@nabla/vite-plugin-eslint@2.0.4(eslint@9.15.0)(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))':
+  '@nabla/vite-plugin-eslint@2.0.4(eslint@9.15.0)(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))':
     dependencies:
       '@types/eslint': 8.21.3
       chalk: 4.1.2
       debug: 4.3.4
       eslint: 9.15.0
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -4888,9 +4890,9 @@ snapshots:
       unhead: 1.11.11
       vue: 3.5.10(typescript@5.6.3)
 
-  '@vitejs/plugin-vue@5.2.0(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue@3.5.10(typescript@5.6.3))':
+  '@vitejs/plugin-vue@5.2.0(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue@3.5.10(typescript@5.6.3))':
     dependencies:
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
       vue: 3.5.10(typescript@5.6.3)
 
   '@vitest/eslint-plugin@1.1.10(@typescript-eslint/utils@8.14.0(eslint@9.15.0)(typescript@5.6.3))(eslint@9.15.0)(typescript@5.6.3)(vitest@2.1.9(@types/node@22.9.0)(happy-dom@15.11.6)(jsdom@24.1.3)(sass-embedded@1.81.0)(sass@1.79.3))':
@@ -4915,13 +4917,13 @@ snapshots:
       chai: 5.1.2
       tinyrainbow: 1.2.0
 
-  '@vitest/mocker@2.1.9(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))':
+  '@vitest/mocker@2.1.9(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))':
     dependencies:
       '@vitest/spy': 2.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.12
     optionalDependencies:
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
 
   '@vitest/pretty-format@2.0.5':
     dependencies:
@@ -8335,7 +8337,7 @@ snapshots:
       debug: 4.3.7
       es-module-lexer: 1.5.4
       pathe: 1.1.2
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -8347,38 +8349,38 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-markdown@2.2.0(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)):
+  vite-plugin-markdown@2.2.0(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)):
     dependencies:
       domhandler: 4.3.1
       front-matter: 4.0.2
       htmlparser2: 6.1.0
       markdown-it: 12.3.2
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
 
-  vite-plugin-stylelint@5.3.1(postcss@8.4.47)(rollup@4.21.3)(stylelint@16.9.0(typescript@5.6.3))(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)):
+  vite-plugin-stylelint@5.3.1(postcss@8.4.47)(rollup@4.21.3)(stylelint@16.9.0(typescript@5.6.3))(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)):
     dependencies:
       '@rollup/pluginutils': 5.1.1(rollup@4.21.3)
       chokidar: 3.6.0
       debug: 4.3.7
       stylelint: 16.9.0(typescript@5.6.3)
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
     optionalDependencies:
       postcss: 8.4.47
       rollup: 4.21.3
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-vue-layouts@0.11.0(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue-router@4.4.5(vue@3.5.10(typescript@5.6.3)))(vue@3.5.10(typescript@5.6.3)):
+  vite-plugin-vue-layouts@0.11.0(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))(vue-router@4.4.5(vue@3.5.10(typescript@5.6.3)))(vue@3.5.10(typescript@5.6.3)):
     dependencies:
       debug: 4.3.7
       fast-glob: 3.3.2
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
       vue: 3.5.10(typescript@5.6.3)
       vue-router: 4.4.5(vue@3.5.10(typescript@5.6.3))
     transitivePeerDependencies:
       - supports-color
 
-  vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3):
+  vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
@@ -8392,7 +8394,7 @@ snapshots:
   vitest@2.1.9(@types/node@22.9.0)(happy-dom@15.11.6)(jsdom@24.1.3)(sass-embedded@1.81.0)(sass@1.79.3):
     dependencies:
       '@vitest/expect': 2.1.9
-      '@vitest/mocker': 2.1.9(vite@5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
+      '@vitest/mocker': 2.1.9(vite@5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3))
       '@vitest/pretty-format': 2.1.9
       '@vitest/runner': 2.1.9
       '@vitest/snapshot': 2.1.9
@@ -8408,7 +8410,7 @@ snapshots:
       tinyexec: 0.3.1
       tinypool: 1.0.1
       tinyrainbow: 1.2.0
-      vite: 5.4.19(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
+      vite: 5.4.20(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
       vite-node: 2.1.9(@types/node@22.9.0)(sass-embedded@1.81.0)(sass@1.79.3)
       why-is-node-running: 2.3.0
     optionalDependencies:
