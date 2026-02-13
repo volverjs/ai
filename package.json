@@ -87,7 +87,7 @@
         "eslint": "^9.39.2",
         "globals": "^15.12.0",
         "happy-dom": "^20.0.2",
-        "markdown-it": "^14.1.0",
+        "markdown-it": "^14.1.1",
         "markdown-it-anchor": "^9.2.0",
         "markdown-it-prism": "^2.3.0",
         "prismjs": "^1.30.0",
