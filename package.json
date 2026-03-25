@@ -102,6 +102,6 @@
         "vue-prism-editor": "2.0.0-alpha.2",
         "vue-router": "^4.4.5",
         "vue-tsc": "^2.1.10",
-        "yaml": "^2.6.0"
+        "yaml": "^2.8.3"
     }
 }
